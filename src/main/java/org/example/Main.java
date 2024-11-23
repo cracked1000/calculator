@@ -1,3 +1,5 @@
+package org.example;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,21 +19,21 @@ public class Main {
                 try {
                     double number = Double.parseDouble(input);
                     numbers.add(number);
-                    System.out.println("Choose an operation: +, -, *, /, E");
+                    System.out.println("Choose an operation: +, -, *, /");
                     char operation = scanner.next().charAt(0);
                     //double result = numbers.get(0);
                     switch (operation) {
                         case '+':
-                            result = add(numbers);
+                            result = methods.add(numbers);
                             break;
                         case '-':
-                            result = subtract(numbers);
+                            result = methods.subtract(numbers);
                             break;
                         case '*':
-                            result = multiply(numbers);
+                            result = methods.multiply(numbers);
                             break;
                         case '/':
-                            result = divide(numbers);
+                            result = methods.divide(numbers);
                             break;
                         default:
                             System.out.println("Invalid operation!");
@@ -50,45 +52,9 @@ public class Main {
             if (numbers.isEmpty()) {
                 System.out.println("No numbers entered. Try again.");
                 continue;
-            }else{
-                for(int i = 0; i< numbers.size();i++){
-                    System.out.println(numbers.get(i));
-                }
             }
         }
         System.out.println("Goodbye!");
         scanner.close();
-    }
-    public static double add(List<Double> numbers) {
-        double sum = 0;
-        for (double number : numbers) {
-            sum += number;
-        }
-        return sum;
-    }
-    public static double subtract(List<Double> numbers) {
-        double result = numbers.get(0);
-        for (int i = 1; i < numbers.size(); i++) {
-            result -= numbers.get(i);
-        }
-        return result * -1;
-    }
-    public static double multiply(List<Double> numbers) {
-        double result = 1;
-        for (double number : numbers) {
-            result *= number;
-        }
-        return result;
-    }
-    public static double divide(List<Double> numbers) {
-        double result = numbers.get(0);
-        for (int i = 1; i < numbers.size(); i++) {
-            if (numbers.get(i) == 0) {
-                System.out.println("Error! Division by zero.");
-                return 0;
-            }
-            result /= numbers.get(i);
-        }
-        return result;
     }
 }
